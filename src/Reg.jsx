@@ -2,45 +2,50 @@ import axios from "axios"
 import {useState} from "react"
 
 function Reg(){
-    const[data,setdata]=useState(
-        {
-            username:"",
-            email:"",
-            password:""
-        }
-    )
 
-    const changeName=(e)=>{
-        setdata({...data,[e.target.name]:e.target.value})
-    }
+const[data,setdata]=useState({
+username:"",
+email:"",
+password:""
+})
 
-    const submit= async()=>
-    {
-        try{
-            //const res=await axios.post("http://localhost:8080/reg",data)
-            const res = await axios.post(
-                "https://new.onrender.com/register",
-                data
-            )
+const changeName=(e)=>{
+setdata({...data,[e.target.name]:e.target.value})
+}
 
-            alert("Register Successfully")
-        }
-        catch(xyz){
-            alert(xyz.response.data)
-        }
-    }
+const submit= async()=>{
+try{
 
-    return(
-        <>
-        <h1>iam App</h1>
+const res = await axios.post(
+"https://new.onrender.com/register",
+data
+)
 
-        <input onChange={changeName} name="username" placeholder="enter username"/>
-        <input onChange={changeName} name="email" placeholder="enter email"/>
-        <input onChange={changeName} name="password" placeholder="enter password"/>
+alert("Register Successfully")
 
-        <button onClick={submit}>register</button>
-        </>
-    )
+}
+catch(xyz){
+
+console.log(xyz)
+alert("Reg Failed")
+
+}
+}
+
+return(
+<>
+<h1>iam App</h1>
+
+<input onChange={changeName} name="username" placeholder="enter username"/>
+
+<input onChange={changeName} name="email" placeholder="enter email"/>
+
+<input onChange={changeName} name="password" placeholder="enter password"/>
+
+<button onClick={submit}>register</button>
+
+</>
+)
 }
 
 export default Reg
