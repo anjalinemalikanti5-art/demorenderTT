@@ -16,7 +16,7 @@ function Reg(){
     {
         try{
             //const res=await axios.post("http://localhost:8080/reg",data)
-            const res = await axios.path(
+            const res = await axios.post(
                 "https://new.onrender.com/register",
                 data
             )
